@@ -28,7 +28,7 @@ node {
 		// TODO Require uptodate inventory file
 		//ansible avocado -a 'docker pull $REGISTRY/debian-avocado'
 
-		# This is cleanup stage it should not affect whole deployment
+		//# This is cleanup stage it should not affect whole deployment
 		sh 'docker rmi debian-avocado'
 		//ansible avocado -m shell -a 'docker  rmi $(docker images -f "dangling=true" $REGISTRY/debian-avocado -q)' || /bin/true
 	}
