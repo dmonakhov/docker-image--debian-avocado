@@ -8,13 +8,14 @@ def REGISTRY = 'alice.qa.sw.ru:5000';
 
 node {
 	stage 'Fetch source and run tests'
-	deleteDir()
 	dir('avocado-misc-tests') {
+		deleteDir()
 		git url: avocado_test_url, branch: avocado_branch;
 		sh 'which inspekt || pip install inspektor'
 		sh 'make -j `nproc` check -f ../Makefile.avocado'
 	}
 	dir('avocado-framework') {
+		deleteDir()
 		git url: avocado_test_url, branch: avocado_branch;
 		sh 'which inspekt || pip install inspektor';
 		sh 'make -j `nproc` check -f ../Makefile.avocado'
